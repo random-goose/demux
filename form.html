@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Registration Form</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #131316;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 80px;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        form {
+            width: 100%;
+            max-width: 300px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #bebebe;
+            padding-left: 5px;
+        }
+        input[type="text"], 
+        input[type="number"], 
+        input[type="email"], 
+        input[type="tel"], 
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            box-sizing: border-box;
+            max-width: 100%;
+            background-color: transparent;
+            color: #fff;
+        }
+        input[type="submit"], .next-button, .prev-button {
+            width: 48%;
+            padding: 10px;
+            background-color: #ef5350;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 1%;
+        }
+        input[type="submit"]:hover, .next-button:hover, .prev-button:hover {
+            background-color: #e53935;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ef5350;
+            box-shadow: 0 0 5px rgba(239, 83, 80, 0.5);
+        }
+        .member-section {
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+        .slide h3 {
+            margin: 0 0 10px;
+            margin-top: 30px;
+            color: #bdbdbd;
+            text-align: center;
+        }
+        .slide-container {
+            width: 100%;
+        }
+        .slide-wrapper {
+            width: 100%;
+        }
+        .slide {
+            width: 100%;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .hidden {
+            display: none;
+        }
+        #teamImage {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #teamImage img {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            height: auto;
+        }
+        #teamImage p a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        #teamImage p {
+            color: #fff;
+        }
+
+        nav {
+            background-color: white;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        nav img {
+            height: 40px;
+        }
+        nav h2 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        nav p {
+            margin: 0;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        nav a {
+            width: 150px;
+            text-align: right;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            nav img {
+                height: 30px;
+                margin-bottom: 5px;
+            }
+            body {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="bvrit_logo_b.png" alt="Logo">
+        <h2>Demux Hackathon</h2>
+        <a href="https://www.bvrit.ac.in/demux">HOME</a>
+    </nav>
+    <div class="main-content">
+        <h1>Team Registration</h1>
+        <form id="sheetdb-form" action="https://sheetdb.io/api/v1/1t69fgaazijpg" method="POST">
+            <label for="teamName">Team Name:</label>
+            <input type="text" id="teamName" name="data[Team Name]" required>
+            
+            <label for="noOfMembers">No. of Members (max 4):</label>
+            <input type="number" id="noOfMembers" name="data[No Of Members]" min="1" max="4" value="1" required>
+            
+            <div id="memberFields" class="slide-container">
+                <div id="slideWrapper" class="slide-wrapper"></div>
+            </div>
+
+            <div id="teamImage" class="hidden">
+                <p>Pay to this QR or <a href="upi://pay?pa=vahini.siruvoru-1@oksbi&pn=Vahini Siruvoru&am=1000.00&cu=INR&aid=uGICAgIC169X6ag">Link</a></p>
+                <img src="QR_V_Maam.png" alt="Team Image">
+            </div>
+
+            <div id="commonFields" class="hidden">
+                <label for="theme">Theme:</label>
+                <select id="theme" name="data[Theme]" required>
+                    <option value="">Select a theme</option>
+                    <option value="AI">AI</option>
+                    <option value="ML">ML</option>
+                    <option value="IOT">IOT</option>
+                </select>
+                
+                <label for="transactionId">Transaction ID:</label>
+                <input type="text" id="transactionId" name="data[Transaction ID]" required>
+                
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script>
+    var form = document.getElementById('sheetdb-form');
+    var noOfMembersInput = document.getElementById('noOfMembers');
+    var slideWrapper = document.getElementById('slideWrapper');
+    var currentSlideIndex = 0;
+    var commonFields = document.getElementById('commonFields');
+
+    function validatePhoneNumber(phoneNumber) {
+        const phoneRegex = /^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[6789]\d{9}$/;
+        return phoneRegex.test(phoneNumber);
+    }
+
+    noOfMembersInput.addEventListener('input', function() {
+        if (this.value > 4) {
+            this.value = 4;
+        }
+        updateMemberFields();
+    });
+
+    function updateMemberFields() {
+        slideWrapper.innerHTML = '';
+        var numMembers = parseInt(noOfMembersInput.value) || 0;
+
+        i=1;
+        slideWrapper.innerHTML += `
+                <div class="slide">
+                    <h3>Member ${i}</h3>
+                    <label for="member${i}Name">Name:</label>
+                    <input type="text" id="member${i}Name" name="data[Member ${i} Name]" required>
+                    
+                    <label for="member${i}Email">Email:</label>
+                    <input type="email" id="member${i}Email" name="data[Member ${i} Email]" required>
+                    
+                    <label for="member${i}Phone">Phone No:</label>
+                    <input type="tel" id="member${i}Phone" name="data[Member ${i} Phone No]" required>
+
+                    <label for="member${i}College">College:</label>
+                    <input type="text" id="member${i}College" name="data[Member ${i} College]" required>
+
+                    <label for="member${i}Year">Year of Study:</label>
+                    <input type="text" id="member${i}Year" name="data[Member ${i} Year]" required>
+                    
+                    <div class="buttons-container">
+                        ${i > 1 ? '<button type="button" class="prev-button" onclick="prevSlide()">Previous</button>' : ''}
+                        ${i < numMembers ? '<button type="button" class="next-button" onclick="nextSlide()">Next</button>' : ''}
+                        ${i == numMembers ? '<button type="button" class="next-button" onclick="showCommonFields()">Next</button>' : ''}
+                    </div>
+                </div>
+            `;
+
+        for (var i = 2; i <= numMembers; i++) {
+            slideWrapper.innerHTML += `
+                <div class="slide">
+                    <h3>Member ${i}</h3>
+                    <label for="member${i}Name">Name:</label>
+                    <input type="text" id="member${i}Name" name="data[Member ${i} Name]" required>
+                    
+                    <label for="member${i}Email">Email:</label>
+                    <input type="email" id="member${i}Email" name="data[Member ${i} Email]" required>
+                    
+                    <label for="member${i}Phone">Phone No:</label>
+                    <input type="tel" id="member${i}Phone" name="data[Member ${i} Phone No]" required>
+                    
+                    <div class="buttons-container">
+                        ${i > 1 ? '<button type="button" class="prev-button" onclick="prevSlide()">Previous</button>' : ''}
+                        ${i < numMembers ? '<button type="button" class="next-button" onclick="nextSlide()">Next</button>' : ''}
+                        ${i == numMembers ? '<button type="button" class="next-button" onclick="showCommonFields()">Next</button>' : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        showCurrentSlide();
+    }
+
+    function showCurrentSlide() {
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach((slide, index) => {
+            slide.style.display = index === currentSlideIndex ? 'block' : 'none';
+        });
+    }
+
+    function nextSlide() {
+        var inputs = document.querySelectorAll(`#slideWrapper .slide:nth-child(${currentSlideIndex + 1}) input`);
+        var allValid = true;
+
+        inputs.forEach(input => {
+            if (!input.value) {
+                alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
+                input.focus();
+                allValid = false;
+                return false;
+            }
+            if (input.type === 'tel' && !validatePhoneNumber(input.value)) {
+                alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
+                input.focus();
+                allValid = false;
+                return false;
+            }
+        });
+
+        if (allValid) {
+            currentSlideIndex++;
+            showCurrentSlide();
+        }
+    }
+
+    function prevSlide() {
+        currentSlideIndex--;
+        showCurrentSlide();
+    }
+
+    function showCommonFields() {
+        var inputs = document.querySelectorAll(`#slideWrapper .slide:nth-child(${currentSlideIndex + 1}) input`);
+        var allValid = true;
+
+        inputs.forEach(input => {
+            if (input.type === 'tel' && !validatePhoneNumber(input.value)) {
+                alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
+                input.focus();
+                allValid = false;
+                return false;
+            } else if (!input.value) {
+                alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
+                input.focus();
+                allValid = false;
+                return false;
+            }
+        });
+
+        if (allValid) {
+            document.getElementById('memberFields').style.display = 'none';
+            document.getElementById('teamImage').classList.remove('hidden');
+            
+            setTimeout(() => {
+                commonFields.classList.remove('hidden');
+            }, 2000);
+        }
+    }
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        if (noOfMembersInput.value > 4) {
+            alert('The number of team members cannot exceed 4.');
+            return;
+        }
+
+        let allValid = true;
+        document.querySelectorAll('input[type="tel"]').forEach(input => {
+            if (!validatePhoneNumber(input.value)) {
+                allValid = false;
+                alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
+                input.focus();
+                return false;
+            }
+        });
+
+        if (!allValid) return;
+
+        fetch(form.action, {
+            method: "POST",
+            body: new FormData(document.getElementById("sheetdb-form")),
+        }).then(
+            response => response.json()
+        ).then((html) => {
+            alert('Success!');
+        });
+    });
+
+    updateMemberFields();
+    </script>
+</body>
+</html>
