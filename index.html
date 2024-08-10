@@ -203,10 +203,7 @@
                 <div id="slideWrapper" class="slide-wrapper"></div>
             </div>
 
-            <div id="teamImage" class="hidden">
-                <p>Pay to this QR or <a href="upi://pay?pa=vahini.siruvoru-1@oksbi&pn=Vahini Siruvoru&am=1000.00&cu=INR&aid=uGICAgIC169X6ag">Link</a></p>
-                <img src="QR_V_Maam.png" alt="Team Image">
-            </div>
+            
 
             <div id="commonFields" class="hidden">
                 <label for="theme">Theme:</label>
@@ -220,6 +217,12 @@
                 <option value="TECH-ENHANCED RETAIL">Tech-Enhanced Retail</option>
             </select>
                 </select>
+
+                <div id="teamImage" >
+                    <p style="margin-bottom: 0;">Pay by scanning this QR or click <a href="upi://pay?pa=vahini.siruvoru-1@oksbi&pn=Vahini Siruvoru&am=1000.00&cu=INR&aid=uGICAgIC169X6ag">here</a></p>
+                    <p style="color: #D3D3D3; margin-top: 0;">(link redirects to UPI apps)</p>
+                    <img src="QR_V_Maam.png" alt="Team Image">
+                </div>
                 
                 <label for="transactionId">Transaction ID:</label>
                 <input type="text" id="transactionId" name="data[Transaction ID]" required>
@@ -237,7 +240,9 @@
             
         </div>
         <a href="#" class="footer-link"><p>Made With ❤️ by Year Zero</p></a>
-</section>
+    </section>
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(128, 128, 128, 0.5); z-index: 999;"></div>
+    <div id="popup" style=" display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255,255,255); color: black; padding: 20px 40px; border-radius: 5px; z-index: 1000;">Processing...</div>
 
     <script>
     var form = document.getElementById('sheetdb-form');
@@ -371,45 +376,60 @@
 
         if (allValid) {
             document.getElementById('memberFields').style.display = 'none';
-            document.getElementById('teamImage').classList.remove('hidden');
-            
-            setTimeout(() => {
-                commonFields.classList.remove('hidden');
-            }, 2000);
+            commonFields.classList.remove('hidden');
         }
     }
 
     form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        
-        if (noOfMembersInput.value > 4) {
-            alert('The number of team members cannot exceed 4.');
-            return;
+    e.preventDefault();
+    
+    if (noOfMembersInput.value > 4) {
+        alert('The number of team members cannot exceed 4.');
+        return;
+    }
+
+    let allValid = true;
+    document.querySelectorAll('input[type="tel"]').forEach(input => {
+        if (!validatePhoneNumber(input.value)) {
+            allValid = false;
+            alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
+            input.focus();
+            return false;
         }
-
-        let allValid = true;
-        document.querySelectorAll('input[type="tel"]').forEach(input => {
-            if (!validatePhoneNumber(input.value)) {
-                allValid = false;
-                alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
-                input.focus();
-                return false;
-            }
-        });
-
-        if (!allValid) return;
-
-        fetch(form.action, {
-            method: "POST",
-            body: new FormData(document.getElementById("sheetdb-form")),
-        }).then(
-            response => response.json()
-        ).then((html) => {
-            alert('Success!');
-        });
     });
+
+    if (!allValid) return;
+
+    const popup = document.getElementById('popup');
+    popup.style.display = 'block';
+    popup.textContent = 'Processing...';
+    overlay.style.display = 'block';
+
+    fetch(form.action, {
+        method: "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+        popup.textContent = 'Submitted';
+
+        setTimeout(() => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }, 2000);
+
+    }).catch(error => {
+        popup.textContent = 'Error occurred';
+        setTimeout(() => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }, 2000);
+        console.error('Error:', error);
+    });
+});
 
     updateMemberFields();
     </script>
+    
 </body>
 </html>
