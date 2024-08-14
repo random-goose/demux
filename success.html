@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmed</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #131316;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 80px;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            padding-bottom: 25px;
+        }
+        .confirmation-message {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .confirmation-message p {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        nav {
+            background-color: #D3D3D3;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        nav img {
+            height: 40px;
+        }
+        nav h2 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        nav a {
+            width: 150px;
+            text-align: right;
+            color: #000;
+            text-decoration: none;
+        }
+        .footer {
+            width: 100%;
+            text-align: center;
+            background-color: #D3D3D3;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+        .footer h4 {
+            margin-bottom: 10px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .footer-link {
+            color: #000;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            nav img {
+                height: 30px;
+                margin-bottom: 5px;
+            }
+            body {
+                padding-top: 100px;
+            }
+            nav a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="bvrit_logo_b.png" alt="Logo">
+        <h2>Demux Hackathon</h2>
+        <a href="https://www.bvrit.ac.in/demux">HOME</a>
+    </nav>
+    <div class="main-content">
+        <h1>Thank You!</h1>
+        <div class="confirmation-message">
+            <p>Your registration demux has been confirmed :)</p>
+            <p>We're excited to have you participate!</p>
+            <p>Further details will be sent to your registered email address soon.</p>
+        </div>
+    </div>
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>The CSBS Department and its Year Zero club are hosting DEMUX 2024, a hackathon designed to bring together bright minds to tackle real-world issues through innovative solutions. <br>Join us for a day of intense coding, collaboration, and networking opportunities.</p>
+        <div class="icons">
+            <a href="https://www.instagram.com/year_zero.bvrit/"><i class="fa fa-instagram"></i></a>
+        </div>
+        <a href="#" class="footer-link"><p>Made With ❤️ by Year Zero</p></a>
+    </section>
+</body>
+</html>
