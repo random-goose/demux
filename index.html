@@ -185,7 +185,7 @@
     </style>
 </head>
 <body>
-    <nav>
+<!--     <nav>
         <img src="bvrit_logo_b.png" alt="Logo">
         <h2>Demux Hackathon</h2>
         <a href="https://www.bvrit.ac.in/demux">HOME</a>
@@ -243,194 +243,196 @@
         <a href="#" class="footer-link"><p>Made With ❤️ by Year Zero</p></a>
     </section>
     <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(128, 128, 128, 0.5); z-index: 999;"></div>
-    <div id="popup" style=" display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255,255,255); color: black; padding: 20px 40px; border-radius: 5px; z-index: 1000;">Processing...</div>
+    <div id="popup" style=" display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255,255,255); color: black; padding: 20px 40px; border-radius: 5px; z-index: 1000;">Processing...</div> -->
 
     <script>
-    var form = document.getElementById('sheetdb-form');
-    var noOfMembersInput = document.getElementById('noOfMembers');
-    var slideWrapper = document.getElementById('slideWrapper');
-    var currentSlideIndex = 0;
-    var commonFields = document.getElementById('commonFields');
+//     var form = document.getElementById('sheetdb-form');
+//     var noOfMembersInput = document.getElementById('noOfMembers');
+//     var slideWrapper = document.getElementById('slideWrapper');
+//     var currentSlideIndex = 0;
+//     var commonFields = document.getElementById('commonFields');
 
-    function validatePhoneNumber(phoneNumber) {
-        const phoneRegex = /^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[6789]\d{9}$/;
-        return phoneRegex.test(phoneNumber);
-    }
+//     function validatePhoneNumber(phoneNumber) {
+//         const phoneRegex = /^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[6789]\d{9}$/;
+//         return phoneRegex.test(phoneNumber);
+//     }
 
-    noOfMembersInput.addEventListener('input', function() {
-        if (this.value > 4) {
-            this.value = 4;
-        }
-        updateMemberFields();
-    });
+//     noOfMembersInput.addEventListener('input', function() {
+//         if (this.value > 4) {
+//             this.value = 4;
+//         }
+//         updateMemberFields();
+//     });
 
-    function updateMemberFields() {
-        slideWrapper.innerHTML = '';
-        var numMembers = parseInt(noOfMembersInput.value) || 0;
+//     function updateMemberFields() {
+//         slideWrapper.innerHTML = '';
+//         var numMembers = parseInt(noOfMembersInput.value) || 0;
 
-        i=1;
-        slideWrapper.innerHTML += `
-                <div class="slide">
-                    <h3>Member ${i}</h3>
-                    <label for="member${i}Name">Name:</label>
-                    <input type="text" id="member${i}Name" name="data[Member ${i} Name]" required>
+//         i=1;
+//         slideWrapper.innerHTML += `
+//                 <div class="slide">
+//                     <h3>Member ${i}</h3>
+//                     <label for="member${i}Name">Name:</label>
+//                     <input type="text" id="member${i}Name" name="data[Member ${i} Name]" required>
                     
-                    <label for="member${i}Email">Email:</label>
-                    <input type="email" id="member${i}Email" name="data[Member ${i} Email]" required>
+//                     <label for="member${i}Email">Email:</label>
+//                     <input type="email" id="member${i}Email" name="data[Member ${i} Email]" required>
                     
-                    <label for="member${i}Phone">Phone No:</label>
-                    <input type="tel" id="member${i}Phone" name="data[Member ${i} Phone No]" required>
+//                     <label for="member${i}Phone">Phone No:</label>
+//                     <input type="tel" id="member${i}Phone" name="data[Member ${i} Phone No]" required>
 
-                    <label for="member${i}College">College:</label>
-                    <input type="text" id="member${i}College" name="data[Member ${i} College]" required>
+//                     <label for="member${i}College">College:</label>
+//                     <input type="text" id="member${i}College" name="data[Member ${i} College]" required>
 
-                    <label for="member${i}Year">Year of Study:</label>
-                    <input type="text" id="member${i}Year" name="data[Member ${i} Year]" required>
+//                     <label for="member${i}Year">Year of Study:</label>
+//                     <input type="text" id="member${i}Year" name="data[Member ${i} Year]" required>
                     
-                    <div class="buttons-container">
-                        ${i > 1 ? '<button type="button" class="prev-button" onclick="prevSlide()">Previous</button>' : ''}
-                        ${i < numMembers ? '<button type="button" class="next-button" onclick="nextSlide()">Next</button>' : ''}
-                        ${i == numMembers ? '<button type="button" class="next-button" onclick="showCommonFields()">Next</button>' : ''}
-                    </div>
-                </div>
-            `;
+//                     <div class="buttons-container">
+//                         ${i > 1 ? '<button type="button" class="prev-button" onclick="prevSlide()">Previous</button>' : ''}
+//                         ${i < numMembers ? '<button type="button" class="next-button" onclick="nextSlide()">Next</button>' : ''}
+//                         ${i == numMembers ? '<button type="button" class="next-button" onclick="showCommonFields()">Next</button>' : ''}
+//                     </div>
+//                 </div>
+//             `;
 
-        for (var i = 2; i <= numMembers; i++) {
-            slideWrapper.innerHTML += `
-                <div class="slide">
-                    <h3>Member ${i}</h3>
-                    <label for="member${i}Name">Name:</label>
-                    <input type="text" id="member${i}Name" name="data[Member ${i} Name]" required>
+//         for (var i = 2; i <= numMembers; i++) {
+//             slideWrapper.innerHTML += `
+//                 <div class="slide">
+//                     <h3>Member ${i}</h3>
+//                     <label for="member${i}Name">Name:</label>
+//                     <input type="text" id="member${i}Name" name="data[Member ${i} Name]" required>
                     
-                    <label for="member${i}Email">Email:</label>
-                    <input type="email" id="member${i}Email" name="data[Member ${i} Email]" required>
+//                     <label for="member${i}Email">Email:</label>
+//                     <input type="email" id="member${i}Email" name="data[Member ${i} Email]" required>
                     
-                    <label for="member${i}Phone">Phone No:</label>
-                    <input type="tel" id="member${i}Phone" name="data[Member ${i} Phone No]" required>
+//                     <label for="member${i}Phone">Phone No:</label>
+//                     <input type="tel" id="member${i}Phone" name="data[Member ${i} Phone No]" required>
                     
-                    <div class="buttons-container">
-                        ${i > 1 ? '<button type="button" class="prev-button" onclick="prevSlide()">Previous</button>' : ''}
-                        ${i < numMembers ? '<button type="button" class="next-button" onclick="nextSlide()">Next</button>' : ''}
-                        ${i == numMembers ? '<button type="button" class="next-button" onclick="showCommonFields()">Next</button>' : ''}
-                    </div>
-                </div>
-            `;
-        }
+//                     <div class="buttons-container">
+//                         ${i > 1 ? '<button type="button" class="prev-button" onclick="prevSlide()">Previous</button>' : ''}
+//                         ${i < numMembers ? '<button type="button" class="next-button" onclick="nextSlide()">Next</button>' : ''}
+//                         ${i == numMembers ? '<button type="button" class="next-button" onclick="showCommonFields()">Next</button>' : ''}
+//                     </div>
+//                 </div>
+//             `;
+//         }
 
-        showCurrentSlide();
-    }
+//         showCurrentSlide();
+//     }
 
-    function showCurrentSlide() {
-        const slides = document.querySelectorAll('.slide');
-        slides.forEach((slide, index) => {
-            slide.style.display = index === currentSlideIndex ? 'block' : 'none';
-        });
-    }
+//     function showCurrentSlide() {
+//         const slides = document.querySelectorAll('.slide');
+//         slides.forEach((slide, index) => {
+//             slide.style.display = index === currentSlideIndex ? 'block' : 'none';
+//         });
+//     }
 
-    function nextSlide() {
-        var inputs = document.querySelectorAll(`#slideWrapper .slide:nth-child(${currentSlideIndex + 1}) input`);
-        var allValid = true;
+//     function nextSlide() {
+//         var inputs = document.querySelectorAll(`#slideWrapper .slide:nth-child(${currentSlideIndex + 1}) input`);
+//         var allValid = true;
 
-        inputs.forEach(input => {
-            if (!input.value) {
-                alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
-                input.focus();
-                allValid = false;
-                return false;
-            }
-            if (input.type === 'tel' && !validatePhoneNumber(input.value)) {
-                alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
-                input.focus();
-                allValid = false;
-                return false;
-            }
-        });
+//         inputs.forEach(input => {
+//             if (!input.value) {
+//                 alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
+//                 input.focus();
+//                 allValid = false;
+//                 return false;
+//             }
+//             if (input.type === 'tel' && !validatePhoneNumber(input.value)) {
+//                 alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
+//                 input.focus();
+//                 allValid = false;
+//                 return false;
+//             }
+//         });
 
-        if (allValid) {
-            currentSlideIndex++;
-            showCurrentSlide();
-        }
-    }
+//         if (allValid) {
+//             currentSlideIndex++;
+//             showCurrentSlide();
+//         }
+//     }
 
-    function prevSlide() {
-        currentSlideIndex--;
-        showCurrentSlide();
-    }
+//     function prevSlide() {
+//         currentSlideIndex--;
+//         showCurrentSlide();
+//     }
 
-    function showCommonFields() {
-        var inputs = document.querySelectorAll(`#slideWrapper .slide:nth-child(${currentSlideIndex + 1}) input`);
-        var allValid = true;
+//     function showCommonFields() {
+//         var inputs = document.querySelectorAll(`#slideWrapper .slide:nth-child(${currentSlideIndex + 1}) input`);
+//         var allValid = true;
 
-        inputs.forEach(input => {
-            if (input.type === 'tel' && !validatePhoneNumber(input.value)) {
-                alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
-                input.focus();
-                allValid = false;
-                return false;
-            } else if (!input.value) {
-                alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
-                input.focus();
-                allValid = false;
-                return false;
-            }
-        });
+//         inputs.forEach(input => {
+//             if (input.type === 'tel' && !validatePhoneNumber(input.value)) {
+//                 alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
+//                 input.focus();
+//                 allValid = false;
+//                 return false;
+//             } else if (!input.value) {
+//                 alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
+//                 input.focus();
+//                 allValid = false;
+//                 return false;
+//             }
+//         });
 
-        if (allValid) {
-            document.getElementById('memberFields').style.display = 'none';
-            commonFields.classList.remove('hidden');
-        }
-    }
+//         if (allValid) {
+//             document.getElementById('memberFields').style.display = 'none';
+//             commonFields.classList.remove('hidden');
+//         }
+//     }
 
-    form.addEventListener("submit", function(e) {
-    e.preventDefault();
+//     form.addEventListener("submit", function(e) {
+//     e.preventDefault();
     
-    if (noOfMembersInput.value > 4) {
-        alert('The number of team members cannot exceed 4.');
-        return;
-    }
+//     if (noOfMembersInput.value > 4) {
+//         alert('The number of team members cannot exceed 4.');
+//         return;
+//     }
 
-    let allValid = true;
-    document.querySelectorAll('input[type="tel"]').forEach(input => {
-        if (!validatePhoneNumber(input.value)) {
-            allValid = false;
-            alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
-            input.focus();
-            return false;
-        }
-    });
+//     let allValid = true;
+//     document.querySelectorAll('input[type="tel"]').forEach(input => {
+//         if (!validatePhoneNumber(input.value)) {
+//             allValid = false;
+//             alert(`Please enter a valid phone number for ${input.previousElementSibling.textContent}`);
+//             input.focus();
+//             return false;
+//         }
+//     });
 
-    if (!allValid) return;
+//     if (!allValid) return;
 
-    const popup = document.getElementById('popup');
-    popup.style.display = 'block';
-    popup.textContent = 'Processing...';
-    overlay.style.display = 'block';
+//     const popup = document.getElementById('popup');
+//     popup.style.display = 'block';
+//     popup.textContent = 'Processing...';
+//     overlay.style.display = 'block';
 
-    fetch(form.action, {
-        method: "POST",
-        body: new FormData(document.getElementById("sheetdb-form")),
-    }).then(
-        response => response.json()
-    ).then((html) => {
-        popup.textContent = 'Submitted';
+//     fetch(form.action, {
+//         method: "POST",
+//         body: new FormData(document.getElementById("sheetdb-form")),
+//     }).then(
+//         response => response.json()
+//     ).then((html) => {
+//         popup.textContent = 'Submitted';
 
-        setTimeout(() => {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-        }, 2000);
+//         setTimeout(() => {
+//             popup.style.display = 'none';
+//             overlay.style.display = 'none';
+//         }, 2000);
+//         window.location = "https://random-goose.github.io/demux/success.html";
+
+//     }).catch(error => {
+//         popup.textContent = 'Error occurred';
+//         setTimeout(() => {
+//             popup.style.display = 'none';
+//             overlay.style.display = 'none';
+//         }, 2000);
+//         console.error('Error:', error);
+//     });
+// });
+
+//     updateMemberFields();
         window.location = "https://random-goose.github.io/demux/success.html";
-
-    }).catch(error => {
-        popup.textContent = 'Error occurred';
-        setTimeout(() => {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-        }, 2000);
-        console.error('Error:', error);
-    });
-});
-
-    updateMemberFields();
+        
     </script>
     
 </body>
