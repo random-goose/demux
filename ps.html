@@ -1,26 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Registration Form</title>
+    <title>Problem Statements</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #131316;
-            margin: 0;
-            padding-top: 80px;
-            box-sizing: border-box;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: 'Poppins', Sans-Serif;
+            background-color: #000;
             color: #fff;
+            margin: 0;
+            padding: 0;
         }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 100px;
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+        }
+
         h1 {
             text-align: center;
+            color: #fff;
+            font-size: 40px;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        h2 {
+            cursor: pointer;
+            color: #fff;
+            margin-top: 30px;
+            font-size: 1.75em;
+            padding: 15px;
+            background-color: #444;
+            border-radius: 5px;
+            border-bottom: 3px solid #ef5350;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+            overflow: hidden;
+            font-size: 15px;
+        }
+
+        h2:hover {
+            background-color: #ef5350;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+
+        .problem-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
             margin-bottom: 20px;
+            display: none;
+            padding-left: 15px;
+            border-left: 3px solid #ef5350;
+        }
+
+        .problem-list li {
+            padding: 12px 20px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            background-color: #666;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .li .description {
+            display: none;
+            padding-top: 10px;
+            color: #000;
+        }
+
+        .problem-list li:hover .description {
+            display: block;
+            color: #000;
+        }
+
+        .problem-list li:hover {
+            background-color: #ef5350;
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .problem-list li:hover .description {
+            color: #000;
+        }
+
+        footer {
+            background-color: silver;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            color: black;
+        }
+        .theme-header {
+            font-weight: lighter;
+            font-size: large;
         }
         nav {
             background-color: #D3D3D3;
@@ -42,131 +138,181 @@
         nav h2 {
             font-size: 1.2rem;
             margin: 0;
-            color: #000;
         }
-        .nav-links {
-            width: 150px;
-            display: flex;
-            justify-content: space-between;
+        nav p {
+            margin: 0;
         }
         a {
             color: #000;
             text-decoration: none;
         }
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
+        nav a {
+            width: 150px;
+            text-align: right;
         }
-        .container {
-            width: 90%;
-            height: 80vh;
-            margin: 20px auto;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .footer {
-            margin-top: auto;
-            width: 100%;
-            text-align: center;
-            background-color: #D3D3D3;
+        nav p {
+            font-size: large;
             color: #000;
-            padding: 20px 0;
-        }
-        .footer h4 {
-            margin-top: 0;
-        }
-        .button-24 {
-  background: #FF4742;
-  border: 1px solid #FF4742;
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-  font-size: 16px;
-  line-height: 16px;
-  min-height: 40px;
-  outline: 0;
-  padding: 12px 14px;
-  text-align: center;
-  text-rendering: geometricprecision;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  width: 100%;
-  margin-top: 12px;
-}
-
-.button-24:hover,
-.button-24:active {
-  background-color: initial;
-  background-position: 0 0;
-  color: #FF4742;
-  
-}
-
-.button-24:active {
-  opacity: .5;
-}
-        @media (max-width: 600px) {
-            nav {
-                flex-direction: column;
-                padding: 10px;
-            }
-            nav img {
-                height: 30px;
-                margin-bottom: 5px;
-            }
-            body {
-                padding-top: 100px;
-            }
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-            }
-            .nav-links a {
-                margin: 0 10px;
-            }
         }
     </style>
 </head>
+
 <body>
     <nav>
         <img src="bvrit_logo_b.png" alt="Logo">
-        <h2>Demux Hackathon</h2>
-        <div class="nav-links">
-            <a href="https://www.bvrit.ac.in/demux">Home</a>
-            <a href="https://random-goose.github.io/demux">Register</a>
-        </div>
+        <p>Demux Hackathon</p>
+        <a href="https://www.bvrit.ac.in/demux">HOME</a>
     </nav>
-    <div class="main-content">
-        <h1>Problem Statements</h1>
-    </div>
-
     <div class="container">
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQIJNhQl2kCgXvB7Dngq4OFTCkQXxHrrO_k9JO2QhoAq6qPzdmWcdyDIgBdHcD1rTL_2q0OwlWY6wy/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-        <a href="https://random-goose.github.io/demux/"> <button class="button-24" role="button">REGISTER</button></a>
+        <h1>Problem Statements</h1>
+
+        <!-- Smart Health Revolution -->
+        <h2 onclick="toggleProblems('theme1', this)" class="theme-header">Smart Health</h2>
+        <ul id="theme1" class="problem-list">
+            <li>Drug Inventory and Supply Chain Tracking System 
+                <div class="description">Develop a system to track the inventory and supply chain of drugs in real-time to prevent shortages and overstocking.</div>
+            </li>
+            <li>Real-Time Symptom Diagnosis and Health Metric Analysis 
+                <div class="description">Create a machine learning model to analyze health metrics and symptoms for real-time diagnosis and recommendations.</div>
+            </li>
+            <li>Vision Transformers / Vision-Language Models  for Medical Report Generation 
+                <div class="description">Utilize vision transformers and VLMs to generate detailed medical reports from visual data.</div>
+            </li>
+            <li>Software for Speech Language Therapy Clinical Services 
+                <div class="description">Develop software to aid in speech therapy, utilizing speech synthesis and recognition technologies.</div>
+            </li>
+            <li>Affordable Wearable Technology for Cardiovascular Health Monitoring in Rural Areas 
+                <div class="description">Create affordable wearable devices that can monitor cardiovascular health in real-time, aimed at rural populations.</div>
+            </li>
+            <li>Choose your own Problem statement</li>
+        </ul>
+
+        <!-- Eco-Friendly Tech -->
+        <h2 onclick="toggleProblems('theme2', this)" class="theme-header">Eco-Friendly Tech</h2>
+        <ul id="theme2" class="problem-list">
+            <li>Recycling Waste Classification Using Vision Transformers / Vision-Language Models  
+                <div class="description">Use VLMs to classify and sort waste materials for efficient recycling processes.</div>
+            </li>
+            <li>AI-Driven Solution for Optimized Waste Management Systems 
+                <div class="description">Develop an AI solution to optimize the efficiency of waste management systems in urban areas.</div>
+            </li>
+            <li>Technological Solutions for Capturing AQI Values 
+                <div class="description">Create a web application that tracks and displays Air Quality Index (AQI) values in real-time.</div>
+            </li>
+            <li>Interactive App or Game for Promoting Eco-Friendly Lifestyles 
+                <div class="description">Develop an engaging app or game that encourages users to adopt eco-friendly habits.</div>
+            </li>
+            <li>IoT-Enabled System for Garbage Collection and Management 
+                <div class="description">Create an IoT-based system to monitor and manage garbage collection in smart cities.</div>
+            </li>
+            <li>Choose your own Problem statement</li>
+        </ul>
+
+        <!-- Agri-Tech Revolution -->
+        <h2 onclick="toggleProblems('theme3', this)" class="theme-header">Agri-Tech</h2>
+        <ul id="theme3" class="problem-list">
+            <li>Crop Disease Detection Using Visual Machine Learning Models 
+                <div class="description">Develop a visual ML model to detect crop diseases early and recommend treatments.</div>
+            </li>
+            <li>Smart Irrigation System for Precision Farming 
+                <div class="description">Create an IoT-based smart irrigation system that optimizes water usage based on real-time data.</div>
+            </li>
+            <li>Comprehensive Farm Management Software 
+                <div class="description">Develop a web application that integrates various farm management tasks into a single platform.</div>
+            </li>
+            <li>Blockchain-Based Solution for Transparency in Agri-Supply Chains 
+                <div class="description">Use blockchain to create a transparent and tamper-proof agri-supply chain management system.</div>
+            </li>
+            <li>Data-Driven Crop Yield Prediction 
+                <div class="description">Develop a data science model to predict crop yields based on historical data and real-time inputs.</div>
+            </li>
+            <li>Choose your own Problem statement</li>
+        </ul>
+
+        <!-- SMART EDU -->
+        <h2 onclick="toggleProblems('theme4', this)" class="theme-header">Smart Edu</h2>
+        <ul id="theme4" class="problem-list">
+            <li>Adaptive Learning Pathways with AI-Powered Personalized Learning 
+                <div class="description">Create an AI-powered platform that personalizes learning paths based on student performance and preferences.</div>
+            </li>
+            <li>Interactive Learning with Augmented Reality 
+                <div class="description">Develop an AR-based interactive learning platform for immersive educational experiences.</div>
+            </li>
+            <li>Real-Time Translation Tools for Overcoming Language Barriers in Education 
+                <div class="description">Create AI tools for real-time translation to help students overcome language barriers in learning.</div>
+            </li>
+            <li>Online Learning Platform for Skill Development 
+                <div class="description">Build an online platform offering courses and resources for skill development in various fields.</div>
+            </li>
+            <li>Smart Content Generation with Natural Language Processing 
+                <div class="description">Utilize NLP to generate smart, adaptive content for educational purposes based on user input and preferences.</div>
+            </li>
+            <li>Choose your own Problem statement</li>
+        </ul>
+
+        <!-- NextGen Energy -->
+        <h2 onclick="toggleProblems('theme5', this)" class="theme-header">NextGen Energy</h2>
+        <ul id="theme5" class="problem-list">
+            <li>AI-Optimized Solar Panel Placement Algorithm 
+                <div class="description">Develop an AI algorithm to optimize the placement of solar panels for maximum efficiency.</div>
+            </li>
+            <li>Community Energy Sharing Platform 
+                <div class="description">Create a platform for communities to share and trade renewable energy resources.</div>
+            </li>
+            <li>IoT-Enabled Smart Home Energy Assistant 
+                <div class="description">Develop an IoT solution that optimizes home energy usage by monitoring and managing devices.</div>
+            </li>
+            <li>Data-Driven Model for Optimizing Electric Vehicle Charging Stations 
+                <div class="description">Create a data-driven model to optimize the placement and usage of electric vehicle charging stations.</div>
+            </li>
+            <li>Renewable Energy Education App
+                <div class="description">Build a mobile app to educate users about renewable energy and its benefits.</div>
+            </li>
+            <li>Choose your own Problem statement</li>
+        </ul>
+
+        <!-- Tech-Enhanced Retail -->
+        <h2 onclick="toggleProblems('theme6', this)" class="theme-header">Tech-Enhanced Retail</h2>
+        <ul id="theme6" class="problem-list">
+            <li>AI Personalization in Retail 
+                <div class="description">Develop an AI system that personalizes shopping experiences based on customer behavior and preferences.</div>
+            </li>
+            <li>Smart Checkout System Integration 
+                <div class="description">Create a web-based smart checkout system that streamlines the purchasing process.</div>
+            </li>
+            <li>Retail Demand Forecasting with Data-Driven Models 
+                <div class="description">Develop a data science model to predict retail demand trends for better inventory management.</div>
+            </li>
+            <li>AR-Enabled Retail Application 
+                <div class="description">Build an AR application that enhances in-store shopping experiences with virtual try-ons and information overlays.</div>
+            </li>
+            <li>Smart Inventory Management System (IoT, WebDev, Blockchain, or ML)
+                <div class="description">Create a smart inventory management system that integrates IoT, blockchain, or ML technologies for real-time tracking and management.</div>
+            </li>
+            <li>Choose your own Problem statement</li>
+        </ul>
     </div>
 
-<p><br></p>
-    <section class="footer" style="margin-top: 5vh;">
-        <h4>About Us</h4>
-        <p>The CSBS Department and its Year Zero club are hosting DEMUX 2024, a hackathon designed to bring together bright minds to tackle real-world issues through innovative solutions. <br>Join us for a day of intense coding, collaboration, and networking opportunities.</p>
-        <div class="icons">
-            <a href="https://www.instagram.com/year_zero.bvrit/"><i class="fa fa-instagram"></i></a>
-        </div>
-        <a href="#" class="footer-link"><p>Made With ❤️ by Year Zero</p></a>
-    </section>
+    <footer>
+        <p><strong>About Us</strong></p>
+        <p>The CSBS Department and its Year Zero club are hosting DEMUX 2024, a hackathon designed to bring together bright minds to tackle real-world issues through innovative solutions.</p>
+        <p>Join us for a day of intense coding, collaboration, and networking opportunities.</p>
+        <p>Made With &#9825; by Year Zero</p>
+    </footer>
+
+    <script>
+        function toggleProblems(themeId, header) {
+            var element = document.getElementById(themeId);
+
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                header.classList.add('open');
+            } else {
+                element.style.display = "none";
+                header.classList.remove('open');
+            }
+        }
+    </script>
 </body>
+
 </html>
